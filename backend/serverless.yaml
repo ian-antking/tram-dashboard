@@ -24,3 +24,5 @@ functions:
       - httpApi:
           path: /departures
           method: GET
+    environment:
+      API_TOKEN: ${ssm:/tram-dashboard/${opt:stage}/api-key}

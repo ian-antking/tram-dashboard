@@ -173,13 +173,18 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/tram-dashboard/dev/1662042856443-2022-09-01T14:34:16.443Z/getTramDepartures.zip"
+                "S3Key": "serverless/tram-dashboard/dev/1662049443020-2022-09-01T16:24:03.020Z/getTramDepartures.zip"
               },
               "Handler": "bin/getTramDepartures",
               "Runtime": "go1.x",
               "FunctionName": "tram-dashboard-dev-get-tram-departures",
               "MemorySize": 1024,
               "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "API_TOKEN": "8f3ff7790fa84686a8c426f936eb4248"
+                }
+              },
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -191,14 +196,14 @@
               "GetTramDeparturesLogGroup"
             ]
           },
-          "GetTramDeparturesLambdaVersionjqeTxPQx4QK6I87TRpVeSQLhcWmGj6nitt580bqgw": {
+          "GetTramDeparturesLambdaVersionT358MiBv18AwNQRYSkDHNY6ST73QOpHunHiwhRMuk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetTramDeparturesLambdaFunction"
               },
-              "CodeSha256": "0XUrZLcmixu+NiVp9zPNyppiytS8UPX3gOGtnq/JLII="
+              "CodeSha256": "BmbvV46mLIuaBzQMt1y50gos003wxjKO91Ob9nK/8D4="
             }
           },
           "HttpApi": {
@@ -306,7 +311,7 @@
           "GetTramDeparturesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetTramDeparturesLambdaVersionjqeTxPQx4QK6I87TRpVeSQLhcWmGj6nitt580bqgw"
+              "Ref": "GetTramDeparturesLambdaVersionT358MiBv18AwNQRYSkDHNY6ST73QOpHunHiwhRMuk"
             },
             "Export": {
               "Name": "sls-tram-dashboard-dev-GetTramDeparturesLambdaFunctionQualifiedArn"
@@ -450,6 +455,9 @@
             "resolvedPath": "/departures"
           }
         ],
+        "environment": {
+          "API_TOKEN": "8f3ff7790fa84686a8c426f936eb4248"
+        },
         "package": {
           "artifact": "/Users/ian.king/Projects/tram-dashboard/backend/.serverless/getTramDepartures.zip"
         },
@@ -457,7 +465,7 @@
         "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "GetTramDeparturesLambdaVersionjqeTxPQx4QK6I87TRpVeSQLhcWmGj6nitt580bqgw"
+        "versionLogicalId": "GetTramDeparturesLambdaVersionT358MiBv18AwNQRYSkDHNY6ST73QOpHunHiwhRMuk"
       }
     },
     "configValidationMode": "warn",
@@ -474,7 +482,7 @@
           "!./**",
           "./bin/**"
         ],
-        "artifactDirectoryName": "serverless/tram-dashboard/dev/1662042856443-2022-09-01T14:34:16.443Z"
+        "artifactDirectoryName": "serverless/tram-dashboard/dev/1662049443020-2022-09-01T16:24:03.020Z"
       },
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -488,7 +496,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/tram-dashboard/dev/1662042856443-2022-09-01T14:34:16.443Z",
+    "artifactDirectoryName": "serverless/tram-dashboard/dev/1662049443020-2022-09-01T16:24:03.020Z",
     "artifact": ""
   }
 }
