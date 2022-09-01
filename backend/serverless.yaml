@@ -1,0 +1,26 @@
+service: tram-dashboard
+
+frameworkVersion: "3"
+
+custom:
+  appName: tram-dashboard-${opt:stage, 'dev'}
+
+package:
+  individually: true
+  patterns:
+    - '!./**'
+    - ./bin/**
+
+provider:
+  name: "aws"
+  runtime: go1.x
+  region: eu-west-2
+
+functions:
+  getTramDepartures:
+    name: ${self:custom.appName}-get-tram-departures
+    handler: bin/getTramDepartures
+    events:
+      - httpApi:
+          path: /departures
+          method: GET

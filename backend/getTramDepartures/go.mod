@@ -1,4 +1,4 @@
-module github.com/ian-antking/tram-dashboard-backend/functons/getTramDepartures
+module github.com/ian-antking/tram-dashboard/backend/getTramDepartures
 
 go 1.17
 
