@@ -161,7 +161,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/tram-dashboard/dev/1662049443020-2022-09-01T16:24:03.020Z/getTramDepartures.zip"
+          "S3Key": "serverless/tram-dashboard/dev/1662054125935-2022-09-01T17:42:05.935Z/getTramDepartures.zip"
         },
         "Handler": "bin/getTramDepartures",
         "Runtime": "go1.x",
@@ -184,14 +184,14 @@
         "GetTramDeparturesLogGroup"
       ]
     },
-    "GetTramDeparturesLambdaVersionT358MiBv18AwNQRYSkDHNY6ST73QOpHunHiwhRMuk": {
+    "GetTramDeparturesLambdaVersionMVetzVvND2V3tntHAvy6xFJs1d2DQl3RzgGECDtp8q4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetTramDeparturesLambdaFunction"
         },
-        "CodeSha256": "BmbvV46mLIuaBzQMt1y50gos003wxjKO91Ob9nK/8D4="
+        "CodeSha256": "V86r7LLXduoKAVze+0ew+SBQX0oSHgahoz49JrH76mQ="
       }
     },
     "HttpApi": {
@@ -302,7 +302,7 @@
     "GetTramDeparturesLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetTramDeparturesLambdaVersionT358MiBv18AwNQRYSkDHNY6ST73QOpHunHiwhRMuk"
+        "Ref": "GetTramDeparturesLambdaVersionMVetzVvND2V3tntHAvy6xFJs1d2DQl3RzgGECDtp8q4"
       },
       "Export": {
         "Name": "sls-tram-dashboard-dev-GetTramDeparturesLambdaFunctionQualifiedArn"
