@@ -22,7 +22,7 @@ functions:
     handler: bin/getTramDepartures
     events:
       - httpApi:
-          path: /departures
+          path: /departures/{tramStop}
           method: GET
     environment:
       API_TOKEN: ${ssm:/tram-dashboard/${opt:stage}/api-key}

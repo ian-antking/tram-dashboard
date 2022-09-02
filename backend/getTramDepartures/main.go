@@ -24,7 +24,8 @@ func NewHandler(token string) Handler {
 }
 
 func (h *Handler) Run(_ context.Context, event events.APIGatewayV2HTTPRequest) (events.APIGatewayV2HTTPResponse, error) {
-	filter := url.QueryEscape("stationLocation eq 'Clayton Hall'")
+	tramStop := event.PathParameters["tramStop"]
+	filter := url.QueryEscape(fmt.Sprintf("stationLocation eq '%s'", tramStop))
 	reqUrl := fmt.Sprintf("https://api.tfgm.com/odata/Metrolinks?$filter=%s", filter)
 	req, err := http.NewRequest("GET", reqUrl, nil)
 	req.Header.Set("Ocp-Apim-Subscription-Key", h.token)
@@ -36,7 +37,6 @@ func (h *Handler) Run(_ context.Context, event events.APIGatewayV2HTTPRequest) (
 	defer res.Body.Close()
 
 	if err != nil {
-		fmt.Print(err)
 		return events.APIGatewayV2HTTPResponse{
 			StatusCode: res.StatusCode,
 			Headers:    map[string]string{"Content-Type": "application/json"},
