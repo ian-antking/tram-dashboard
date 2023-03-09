@@ -54,6 +54,7 @@ func (h *Handler) Run(_ context.Context, event events.APIGatewayV2HTTPRequest) (
 	}
 
 	var trams = make([]metrolink.Tram, 0, len(metrolinkResponseBody.Value))
+	var messages = make([]string, 0, len(metrolinkResponseBody.Value))
 
 	for _, tram := range metrolinkResponseBody.Value {
 		if tram.Dest0 != "" {
@@ -63,7 +64,6 @@ func (h *Handler) Run(_ context.Context, event events.APIGatewayV2HTTPRequest) (
 				Status:      tram.Status0,
 				Wait:        tram.Wait0,
 				LastUpdated: tram.LastUpdated,
-				Message:     tram.MessageBoard,
 			})
 		}
 		if tram.Dest1 != "" {
@@ -73,7 +73,6 @@ func (h *Handler) Run(_ context.Context, event events.APIGatewayV2HTTPRequest) (
 				Status:      tram.Status1,
 				Wait:        tram.Wait1,
 				LastUpdated: tram.LastUpdated,
-				Message:     tram.MessageBoard,
 			})
 		}
 		if tram.Dest2 != "" {
@@ -83,7 +82,6 @@ func (h *Handler) Run(_ context.Context, event events.APIGatewayV2HTTPRequest) (
 				Status:      tram.Status2,
 				Wait:        tram.Wait2,
 				LastUpdated: tram.LastUpdated,
-				Message:     tram.MessageBoard,
 			})
 		}
 		if tram.Dest3 != "" {
@@ -93,13 +91,15 @@ func (h *Handler) Run(_ context.Context, event events.APIGatewayV2HTTPRequest) (
 				Status:      tram.Status3,
 				Wait:        tram.Wait3,
 				LastUpdated: tram.LastUpdated,
-				Message:     tram.MessageBoard,
 			})
 		}
+
+		messages = append(messages, tram.MessageBoard)
 	}
 
 	responseBody, _ := json.Marshal(metrolink.TramsResponseBody{
-		Trams: trams,
+		Trams:    trams,
+		Messages: messages,
 	})
 
 	return events.APIGatewayV2HTTPResponse{

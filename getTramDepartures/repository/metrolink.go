@@ -43,10 +43,10 @@ type Tram struct {
 	Carriages   string `json:"carriages"`
 	Status      string `json:"status"`
 	Wait        string `json:"wait"`
-	Message     string `json:"message"`
 	LastUpdated string `json:"last_updated"`
 }
 
 type TramsResponseBody struct {
-	Trams []Tram `json:"trams"`
+	Trams    []Tram   `json:"trams"`
+	Messages []string `json:"messages"`
 }
